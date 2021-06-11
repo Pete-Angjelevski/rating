@@ -27,6 +27,11 @@ router.get('/:id', (req, res) => {
 
 // CREATE A RESTAURANT
 router.post('/', (req, res) => {
+  const {name, location, price_range} = req.body.newRestaurant
+
+  db.query('INSERT INTO restaurants (name, location, price_range) values ($1, $2, $3)', [name, location, price_range])
+    .then(result => res.json(result))
+    .catch(err => console.log(err))
   
 })
 
