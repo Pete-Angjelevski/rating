@@ -47,4 +47,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const id = req.params.id
   
+  db.query('DELETE FROM restaurants WHERE id = $1', [id])
+    .then(results => res.json(results.rows))
+    .catch(err => console.log(err))
 })
