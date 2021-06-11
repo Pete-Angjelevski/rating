@@ -20,6 +20,9 @@ router.get('/', (req, res) => {
 // GET A RESTAURANT
 router.get('/:id', (req, res) => {
   const id = req.params.id
+  db.query('SELECT * FROM restaurants WHERE id = $1', [id])
+    .then(result => res.json(result.rows))
+    .catch(err => console.log(err))
 })
 
 // CREATE A RESTAURANT

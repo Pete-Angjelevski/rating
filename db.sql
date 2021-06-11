@@ -12,4 +12,4 @@ CREATE TABLE restaurants (
   price_range INT NOT NULL check(price_range >= 1 and price_range <= 5)
 );
 
-INSERT INTO restaurants (id, name, location, price_range) values (1, 'mcdonalds', 'auckland', 3 )
+INSERT INTO restaurants (id, name, location, price_range) values (1, 'mcdonalds', 'auckland', 3 );
