@@ -38,8 +38,12 @@ router.post('/', (req, res) => {
 // EDIT A RESTAURANT
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  const edit = req.body.edit
-  
+  const {location, price_range} = req.body.edit
+
+  db.query('UPDATE restaurants SET location = $1, price_range = $2 WHERE id = $3', [location, price_range, id])
+    .then(result => res.json(result.rows))
+    .catch(err => console.log(err))
+
 })
 
 // DELETE A RESTAURANT
